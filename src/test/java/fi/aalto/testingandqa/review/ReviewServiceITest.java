@@ -1,8 +1,6 @@
 package fi.aalto.testingandqa.review;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,10 +13,7 @@ import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class ReviewServiceITest {
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+public class ReviewServiceITest extends ReviewServiceBase {
 
     @Autowired
     ReviewService reviewService;
@@ -82,16 +77,8 @@ public class ReviewServiceITest {
         reviewService.addComment(persistedReview.getId(), COMMENT_AUTHOR, emptyComment);
     }
 
-    private void expectReviewExceptionWithMessage(String msg) {
-        thrown.expect(ReviewException.class);
-        thrown.expectMessage(msg);
-    }
-    
     private Review createDefaultReview() {
-        Review persistedReview = new Review();
-        persistedReview.setTitle("Movie of the century");
-        persistedReview.setBody("So good movie!");
-        return reviewRepository.save(persistedReview);
+        return reviewRepository.save(buildDefaultReview());
     }
 
 }
