@@ -45,12 +45,12 @@ public class CurlyBracesCheckerTest {
 
     @Test
     public void testHasValidCurlyBraces_withValidCode_thatHasMultipleOpeningAndClosingBraces_onMultipleLines_returnsTrue() {
-        String codeWithValidMultiBraces =
+        String codeWithValidMultiLineMultiBraces =
                 "public class JavaClass {" +
                 "   JavaClass() { }" +
                 "}";
 
-        assertTrue(hasValidCurlyBraces(codeWithValidMultiBraces));
+        assertTrue(hasValidCurlyBraces(codeWithValidMultiLineMultiBraces));
     }
 
     @Test(expected = RuntimeException.class)
