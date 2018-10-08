@@ -11,10 +11,13 @@ import java.util.Optional;
 public class ReviewService {
 
     private ReviewRepository reviewRepository;
+    private ErrorRepository errorRepository;
+
 
     @Autowired
-    public ReviewService(ReviewRepository repository) {
-        this.reviewRepository = repository;
+    public ReviewService(ReviewRepository reviewRepository, ErrorRepository errorRepository) {
+        this.reviewRepository = reviewRepository;
+        this.errorRepository = errorRepository;
     }
 
     public void addComment(Long reviewId, String author, String comment) throws ReviewException {
@@ -36,6 +39,9 @@ public class ReviewService {
             try {
                 reviewRepository.save(reviewToComment);
             } catch (DataSourceLookupFailureException ex) {
+                Error error = new Error();
+                error.setReason("Connection error");
+                errorRepository.save(error);
                 throw new ReviewException("Commenting is disabled because DBA has broken our connection", ex);
             }
         } else {
