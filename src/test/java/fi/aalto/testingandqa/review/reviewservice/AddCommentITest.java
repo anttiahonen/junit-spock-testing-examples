@@ -1,5 +1,11 @@
-package fi.aalto.testingandqa.review;
+package fi.aalto.testingandqa.review.reviewservice;
 
+import fi.aalto.testingandqa.review.ReviewException;
+import fi.aalto.testingandqa.review.ReviewRepository;
+import fi.aalto.testingandqa.review.ReviewService;
+import fi.aalto.testingandqa.review.ReviewServiceBase;
+import fi.aalto.testingandqa.review.models.Comment;
+import fi.aalto.testingandqa.review.models.Review;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class ReviewServiceITest extends ReviewServiceBase {
+public class AddCommentITest extends ReviewServiceBase {
 
     @Autowired
     ReviewService reviewService;
@@ -22,7 +28,7 @@ public class ReviewServiceITest extends ReviewServiceBase {
     ReviewRepository reviewRepository;
     
     static String COMMENT_AUTHOR = "Antti A";
-    static String COMMENT = "Your review sucked big time!";
+    static String COMMENT = "Your review2 sucked big time!";
 
     @Test
     @Transactional

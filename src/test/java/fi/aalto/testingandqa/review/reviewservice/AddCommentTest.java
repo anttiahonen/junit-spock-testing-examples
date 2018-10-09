@@ -1,5 +1,7 @@
-package fi.aalto.testingandqa.review;
+package fi.aalto.testingandqa.review.reviewservice;
 
+import fi.aalto.testingandqa.review.*;
+import fi.aalto.testingandqa.review.models.Error;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -7,17 +9,19 @@ import org.springframework.jdbc.datasource.lookup.DataSourceLookupFailureExcepti
 
 import java.util.Optional;
 
-public class ReviewServiceTest extends ReviewServiceBase {
+public class AddCommentTest extends ReviewServiceBase {
 
     ReviewService reviewService;
     ReviewRepository reviewRepository;
     ErrorRepository errorRepository;
+    CommentRepository commentRepository;
 
     @Before
     public void setupReviewServiceWithMockRepository() {
         reviewRepository = Mockito.mock(ReviewRepository.class);
         errorRepository = Mockito.mock(ErrorRepository.class);
-        reviewService = new ReviewService(reviewRepository, errorRepository);
+        commentRepository = Mockito.mock(CommentRepository.class);
+        reviewService = new ReviewService(reviewRepository, errorRepository, commentRepository);
     }
 
     @Test

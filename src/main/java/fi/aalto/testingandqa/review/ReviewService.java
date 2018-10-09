@@ -1,5 +1,7 @@
 package fi.aalto.testingandqa.review;
 
+import fi.aalto.testingandqa.review.models.*;
+import fi.aalto.testingandqa.review.models.Error;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.lookup.DataSourceLookupFailureException;
 import org.springframework.stereotype.Service;
@@ -12,12 +14,16 @@ public class ReviewService {
 
     private ReviewRepository reviewRepository;
     private ErrorRepository errorRepository;
+    private CommentRepository commentRepository;
 
 
     @Autowired
-    public ReviewService(ReviewRepository reviewRepository, ErrorRepository errorRepository) {
+    public ReviewService(ReviewRepository reviewRepository,
+                         ErrorRepository errorRepository,
+                         CommentRepository commentRepository) {
         this.reviewRepository = reviewRepository;
         this.errorRepository = errorRepository;
+        this.commentRepository = commentRepository;
     }
 
     public void addComment(Long reviewId, String author, String comment) throws ReviewException {
@@ -46,6 +52,20 @@ public class ReviewService {
             }
         } else {
             throw new ReviewException(String.format("Review with id %d not found", reviewId));
+        }
+    }
+
+    public void addReactionForComment(Long commentId, ReactionType type) throws ReviewException {
+        if (type == null)
+            throw new ReviewException("No reaction type given for comment");
+
+        Optional<Comment> commentForReaction = commentRepository.findById(commentId);
+        if (commentForReaction.isPresent()) {
+            Comment reactionComment = commentForReaction.get();
+            reactionComment.addReaction(type);
+            commentRepository.save(reactionComment);
+        } else {
+            throw new ReviewException(String.format("Comment with id %d not found", commentId));
         }
     }
 

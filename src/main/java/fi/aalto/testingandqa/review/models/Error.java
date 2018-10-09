@@ -1,4 +1,4 @@
-package fi.aalto.testingandqa.review;
+package fi.aalto.testingandqa.review.models;
 
 import javax.persistence.*;
 
