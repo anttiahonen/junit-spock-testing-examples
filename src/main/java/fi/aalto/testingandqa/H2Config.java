@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "fi.aalto.testingandqa.review")
+@EnableJpaRepositories(basePackages = {"fi.aalto.testingandqa.review", "fi.aalto.testingandqa.chucknorris"} )
 @EnableTransactionManagement
 public class H2Config {
 
@@ -49,7 +49,7 @@ public class H2Config {
 
         factoryBean.setDataSource( dataSource() );
         factoryBean.setJpaVendorAdapter( jpaVendorAdapter );
-        factoryBean.setPackagesToScan( "fi.aalto.testingandqa.review" );
+        factoryBean.setPackagesToScan( "fi.aalto.testingandqa.review", "fi.aalto.testingandqa.chucknorris" );
         factoryBean.setJpaProperties( jpaProperties() );
         factoryBean.setPersistenceUnitName( "persistence" );
 

@@ -32,13 +32,12 @@ public class AddCommentITest extends ReviewServiceBase {
 
     @Test
     @Transactional
-    public void test_addComment_withValidCommentThatHasAuthor_persistsTheCommentToGivenReview() throws ReviewException {
+    public void test_addComment_withValidCommentThatHasAuthor_setsTheAuthorAndBodyForComment() throws ReviewException {
         Review persistedReview = createDefaultReview();
 
         reviewService.addComment(persistedReview.getId(), COMMENT_AUTHOR, COMMENT);
 
         List<Comment> reviewComments = reviewRepository.findById(persistedReview.getId()).get().getComments();
-        assertEquals(reviewComments.size(), 1);
         Comment firstComment = reviewComments.get(0);
         assertEquals(firstComment.getAuthor(), COMMENT_AUTHOR);
         assertEquals(firstComment.getBody(), COMMENT);
