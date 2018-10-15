@@ -11,7 +11,7 @@ import org.springframework.jdbc.datasource.lookup.DataSourceLookupFailureExcepti
 import spock.lang.Specification
 import spock.lang.Subject
 
-import static fi.aalto.testingandqa.review.ReviewServiceBase.buildDefaultReview
+import static fi.aalto.testingandqa.reviewservice.ReviewServiceSpecUtils.buildDefaultReview_groovy25
 
 //name can be anything, just remember to extend specification at some point of class inheritance tree for initing Spock
 //for your test case (specification file)
@@ -49,7 +49,7 @@ class CommentedAddCommentSpec extends Specification {
         // verifying part: 1 * <-- exactly one time
         //  wiring the mock: reviewRepository.findById(reviewId), when the mock object reviewRepository is called with the exact parameter reviewId (1L)
         //    stubbing: happens with '>>' <-- then return Optional default review
-        1 * reviewRepository.findById(reviewId) >> Optional.of(buildDefaultReview())
+        1 * reviewRepository.findById(reviewId) >> Optional.of(buildDefaultReview_groovy25())
         and: "while trying to save comment for review the datasource is not available"
         //here we substitute the return value with closure (lambda in java) where an exception is thrown
         1 * reviewRepository.save(_ as Review) >> { throw new DataSourceLookupFailureException("Datasource not available") }
