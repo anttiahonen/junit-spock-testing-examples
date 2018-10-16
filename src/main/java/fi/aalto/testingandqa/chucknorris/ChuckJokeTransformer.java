@@ -32,20 +32,27 @@ public class ChuckJokeTransformer {
         String[] wordsInJoke = chuckNorrisJoke.split(" ");
         List<String> newJokeWords = new ArrayList<>();
 
-        for (String word : wordsInJoke) {
-            boolean wordFirstCharactersIsUpperCase = Character.isUpperCase(word.codePointAt(0));
-            if (wordFirstCharactersIsUpperCase && previousIndexContainsName) {
-                if (previousIndexWord.contains("Chuck") && word.contains("Norris")) {
+        for (int i = 0; i < wordsInJoke.length; i++) {
+            String word = wordsInJoke[i];
+            if (word.trim().length() != 0) {
+                boolean wordFirstCharactersIsUpperCase = Character.isUpperCase(word.codePointAt(0));
+                boolean wordIsLastWord = i == wordsInJoke.length - 1;
+                if (wordFirstCharactersIsUpperCase && previousIndexContainsName) {
+                    if (previousIndexWord.toLowerCase().contains("chuck") && word.toLowerCase().contains("norris")) {
+                        addActualPreviousWordAndCurrentWord(newJokeWords, word);
+                    } else {
+                        replaceOtherNameWith80sMovieStar(newJokeWords);
+                    }
+                } else if (!wordFirstCharactersIsUpperCase && previousIndexContainsName) {
                     addActualPreviousWordAndCurrentWord(newJokeWords, word);
-                } else {
-                    replaceOtherNameWith80sMovieStar(newJokeWords);
-                }
-            } else if (!wordFirstCharactersIsUpperCase && previousIndexContainsName) {
-                addActualPreviousWordAndCurrentWord(newJokeWords, word);
-            } else if (wordFirstCharactersIsUpperCase) {
-                startRecordingWords(word);
-            } else
-                newJokeWords.add(word);
+                } else if (wordFirstCharactersIsUpperCase) {
+                    if (wordIsLastWord)
+                        newJokeWords.add(word);
+                    else
+                        startRecordingWords(word);
+                } else
+                    newJokeWords.add(word);
+            }
         }
 
         String newJoke = String.join(" ", newJokeWords);
@@ -63,6 +70,8 @@ public class ChuckJokeTransformer {
         int index = random.nextInt(OTHER_STARS.size());
         String otherStar = OTHER_STARS.get(index);
         newJokeWords.add(otherStar);
+        previousIndexWord = null;
+        previousIndexContainsName = false;
     }
 
     private void addActualPreviousWordAndCurrentWord(List<String> newJokeWords, String word) {
@@ -71,6 +80,5 @@ public class ChuckJokeTransformer {
         previousIndexWord = null;
         previousIndexContainsName = false;
     }
-
 
 }

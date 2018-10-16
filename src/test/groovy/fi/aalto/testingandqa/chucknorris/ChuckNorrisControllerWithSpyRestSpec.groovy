@@ -8,7 +8,7 @@ import fi.aalto.testingandqa.IntegrationSpecRestBase
 import io.restassured.RestAssured
 import org.springframework.http.HttpStatus
 
-class ChuckNorrisControllerSpecRest extends IntegrationSpecRestBase {
+class ChuckNorrisControllerWithSpyRestSpec extends IntegrationSpecRestBase {
 
     def ENDPOINT = "/chucknorris/randomjoke_refactored"
 
