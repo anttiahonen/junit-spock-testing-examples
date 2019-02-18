@@ -1,5 +1,5 @@
 # junit-spock-testing-examples
-JUnit4 &amp; Spock testing examples with SpringBoot. The contents of this repository are presented with the slides. Slides contain links to file examples inside this repository.
+__JUnit4 &amp; Spock__ testing examples with __SpringBoot__. The contents of this repository are presented with the __slides__. Slides contain links to file examples inside this repository.
 
 * Basics of __Unit & Integration__ testing slides: https://docs.google.com/presentation/d/1tUw528ohLYAz5Bcp9comM924hIH8-g29oSO9khFLsfQ/edit?usp=sharing
 
