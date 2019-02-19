@@ -1,7 +1,7 @@
 # junit-spock-testing-examples
 __JUnit4 &amp; Spock__ testing examples with __SpringBoot__. The contents of this repository are presented with the __slides__. Slides contain links to file examples inside this repository.
 
-* Basics of __Unit & Integration__ testing slides: https://docs.google.com/presentation/d/1tUw528ohLYAz5Bcp9comM924hIH8-g29oSO9khFLsfQ/edit?usp=sharing
+* Basics of __Unit & Integration__ testing slides: https://github.com/anttiahonen/junit-spock-testing-examples/blob/master/docs/Unit%26Integration_Testing_2018.pdf
 
    * Unit testing
    * Integration testing
@@ -12,7 +12,7 @@ __JUnit4 &amp; Spock__ testing examples with __SpringBoot__. The contents of thi
    * Readability
    * Maintainability
    
-* JUnit __Sql__ vs __Builder-pattern__ & __Spock__ testing slides: https://docs.google.com/presentation/d/13mjjVNnTb-pW-ZPb9OrzCvNE0I3-np_dcGvbqaYs4s8/edit?usp=sharing
+* JUnit __Sql__ vs __Builder-pattern__ & __Spock__ testing slides: https://github.com/anttiahonen/junit-spock-testing-examples/blob/master/docs/Unit%26Integration_Testing_BDD_2018.pdf
 
    * Integration testing
      * Test data creating with Builder-pattern
