@@ -58,8 +58,7 @@ class AddCommentISpec extends Specification {
             reviewService.addComment(1L, COMMENT_AUTHOR, COMMENT)
 
         then: "a review exception is thrown"
-            def ex = thrown ReviewException
-            ex.message == "Review with id 1 not found"
+            thrown ReviewException
     }
 
     @Transactional

@@ -10,7 +10,7 @@ class ChuckJokeTransformerSpec extends Specification {
     def static REPLACE_PATTERN = 'REPLACEWITHSTAR'
 
     @Unroll
-    def "replaceOtherNamesThanChuckWith80sMovieStars() with #contextDesc #outcome replace other names"() {
+    def "replaceOtherNamesThanChuckWith80sMovieStars() #contextDesc #outcome replace other names"() {
         given: "a chuck norris joke transformer"
             ChuckJokeTransformer jokeTransformer = new ChuckJokeTransformer()
         and: "a joke of '#joke' to transform"
