@@ -71,7 +71,7 @@ public class CommentedCurlyBracesCheckerTest {
     }
 
     //simple way of testing an expected exception, when we are not interested about the exception message
-    @Test(expected = RuntimeException.class)
+    @Test(expected = AlgorithmException.class)
     public void testHasValidCurlyBraces_withNullCode_throwsException_way1() {
         hasValidCurlyBraces(nullCode);
     }
@@ -80,7 +80,7 @@ public class CommentedCurlyBracesCheckerTest {
     @Test
     public void testHasValidCurlyBraces_withNullCode_throwsException_way2() {
         //define the exception expections before calling the action
-        thrown.expect(RuntimeException.class);
+        thrown.expect(AlgorithmException.class);
         thrown.expectMessage("Provided code was null!");
 
         hasValidCurlyBraces(nullCode);

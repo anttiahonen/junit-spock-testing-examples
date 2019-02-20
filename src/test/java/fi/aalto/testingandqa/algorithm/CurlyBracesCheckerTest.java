@@ -53,14 +53,14 @@ public class CurlyBracesCheckerTest {
         assertTrue(hasValidCurlyBraces(codeWithValidMultiLineMultiBraces));
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = AlgorithmException.class)
     public void testHasValidCurlyBraces_withNullCode_throwsException_way1() {
         hasValidCurlyBraces(nullCode);
     }
 
     @Test
     public void testHasValidCurlyBraces_withNullCode_throwsException_way2() {
-        thrown.expect(RuntimeException.class);
+        thrown.expect(AlgorithmException.class);
         thrown.expectMessage("Provided code was null!");
 
         hasValidCurlyBraces(nullCode);

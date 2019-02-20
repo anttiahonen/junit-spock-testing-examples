@@ -1,6 +1,7 @@
 package fi.aalto.testingandqa.algorithm;
 
 import static fi.aalto.testingandqa.algorithm.CurlyBracesChecker.hasValidCurlyBraces;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -25,8 +26,8 @@ public class BadCurlyBracesCheckerTest {
 
         try {
             hasValidCurlyBraces(null);
-        } catch (RuntimeException e) {
-            assertTrue(true);
+        } catch (AlgorithmException e) {
+            assertEquals("Provided code was null!", e.getMessage());
         }
     }
 
