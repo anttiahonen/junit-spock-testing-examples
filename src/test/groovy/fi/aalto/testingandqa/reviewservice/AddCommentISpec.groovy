@@ -24,7 +24,7 @@ class AddCommentISpec extends Specification {
     def COMMENT = "Your review2 sucked big time!"
 
     @Transactional
-    def "addComment() with valid comment that has persists the comment to given review"() {
+    def "adding comment with valid comment persists the comment to given review"() {
         given: "a persisted review"
             Review persistedReview = createDefaultReview()
 
@@ -39,7 +39,7 @@ class AddCommentISpec extends Specification {
     }
 
     @Transactional
-    def "addComment() with valid comment that has author sets the author and body for comment"() {
+    def "adding comment with valid comment that has author sets the author and body for comment"() {
         given: "a persisted review"
             Review persistedReview = createDefaultReview()
 
@@ -53,7 +53,7 @@ class AddCommentISpec extends Specification {
             }
     }
 
-    def "addComment() for non existing review throws review exception"() {
+    def "adding comment for non existing review throws review exception"() {
         when: "adding comment to non existing review"
             reviewService.addComment(1L, COMMENT_AUTHOR, COMMENT)
 
@@ -62,7 +62,7 @@ class AddCommentISpec extends Specification {
     }
 
     @Transactional
-    def "addComment() with null comment throws review exception"() {
+    def "adding comment with null comment throws review exception"() {
         given: "a persisted review"
             Review persistedReview = createDefaultReview()
         and: "a null comment to try to add for the review"
@@ -77,7 +77,7 @@ class AddCommentISpec extends Specification {
     }
 
     @Transactional
-    def "addComment() with empty comment throws review exception"() {
+    def "adding comment with empty comment throws review exception"() {
         given: "a persisted review"
             Review persistedReview = createDefaultReview()
         and: "an empty comment to try to add for the review"
